@@ -1,6 +1,6 @@
 Hi,
 
-Manually reading photos to fill in deal records is a bottleneck that should've been automated months ago. Built a working demo for your setup: {VERCEL_URL}
+Manually reading photos to fill in deal records is a bottleneck that should've been automated months ago. Built a working demo for your setup: https://roof-deal-pipeline.vercel.app
 
 It covers the 6:00am portal scrape to Pipedrive import, atlas.phila.gov homeowner lookup, $6.33/sqft cost calc, and photo text extraction — all four flows.
 
