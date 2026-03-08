@@ -2,58 +2,64 @@ import type { Profile, PortfolioProject } from "@/lib/types";
 
 export const profile: Profile = {
   name: "Humam",
-  tagline: "Full-stack developer specializing in Next.js applications",
-  bio: "I build MVPs and production apps that solve real operational problems — CRM systems, fleet management platforms, AI-powered dashboards, and e-commerce tools. My approach is straightforward: understand the business need, build something that works, and ship it fast.",
+  tagline:
+    "I build tools that replace manual workflows — scraping, enrichment, OCR, CRM automation.",
+  bio: "Full-stack developer with hands-on experience in AI extraction pipelines, CRM integrations, and document processing. I've built systems that pull structured data out of emails, PDFs, and photos — and push it cleanly into dashboards where a business owner can act on it.",
   approach: [
     {
-      title: "Understand the Problem",
-      description: "Read the full requirements, identify the core pain point",
-    },
-    {
-      title: "Build a Working Demo",
+      title: "Map the Sources",
       description:
-        "Show, don't tell — a live demo is worth 1000 words of proposal text",
+        "Week 1 — understand exactly how your portal emails are structured, what Pipedrive pipeline stages you use today, and what edge cases exist. No assumptions.",
     },
     {
-      title: "Use Realistic Data",
+      title: "Build the Scraping + Import Pipeline",
       description:
-        "Mock data that looks like real client data, not placeholder text",
+        "Week 2–3 — email parser extracts property addresses and pushes new Deals into Pipedrive automatically. Atlas.phila.gov enrichment runs for each deal, pulling owner name, OPA number, and assessed value.",
     },
     {
-      title: "Ship Fast",
-      description: "MVP first, polish later. Get something deployed quickly",
+      title: "Roof Measurement + Photo Extraction",
+      description:
+        "Week 4–5 — sqft-to-cost calculation at $6.33/sqft updates each deal. AI photo reader (GPT-4V or similar) extracts claim number, RCV, deductible, and adjustor name from inspection photos.",
+    },
+    {
+      title: "Testing + Handoff",
+      description:
+        "Week 6+ — run with your real portal emails, fix edge cases, document the system so you can hand it off to anyone. No black box.",
     },
   ],
   skillCategories: [
     {
-      name: "Frontend",
+      name: "Automation & Scraping",
       skills: [
-        "TypeScript",
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Recharts",
-      ],
-    },
-    {
-      name: "Backend & APIs",
-      skills: [
-        "Node.js",
-        "REST APIs",
-        "Microsoft Graph",
-        "Stripe",
-        "Shopify API",
-      ],
-    },
-    {
-      name: "AI & Automation",
-      skills: [
-        "Claude API",
-        "OpenAI API",
+        "Puppeteer",
+        "Playwright",
+        "Email Parsing",
         "n8n",
-        "Prompt Engineering",
+        "Webhook Integrations",
       ],
+    },
+    {
+      name: "AI & Document Extraction",
+      skills: [
+        "GPT-4V / Vision APIs",
+        "Claude API",
+        "OCR Pipelines",
+        "Structured Output",
+        "Confidence Scoring",
+      ],
+    },
+    {
+      name: "CRM & APIs",
+      skills: [
+        "Pipedrive API",
+        "REST API Design",
+        "Philadelphia Open Data (OPA)",
+        "Node.js",
+      ],
+    },
+    {
+      name: "Frontend & Dashboards",
+      skills: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Recharts"],
     },
   ],
 };
@@ -63,21 +69,47 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "wmf-agent",
     title: "WMF Agent Dashboard",
     description:
-      "AI-powered customer service agent for manufacturing — email classification, RFQ extraction, human-in-the-loop approval",
-    tech: ["Next.js", "Claude API", "n8n", "Microsoft Graph"],
+      "AI-powered email processing pipeline for Windsor Metal Finishing. Automated email classification, RFQ data extraction with confidence scoring, and human-in-the-loop approval workflow — closest match to the photo OCR and data extraction work in your project.",
+    tech: ["Next.js", "Claude API", "n8n", "Microsoft Graph", "TypeScript"],
+    outcome:
+      "Replaced a 4-hour manual quote review process with a 20-minute structured extraction and approval flow",
+    relevance:
+      "Same pattern as your photo text reader: unstructured input → AI extraction → structured fields → human review",
+    liveUrl: "https://wmf-agent-dashboard.vercel.app",
+  },
+  {
+    id: "medrecord-ai",
+    title: "MedRecord AI",
+    description:
+      "AI-powered document processing that extracts structured clinical data, diagnoses, medications, and timelines from patient records — document parsing and structured output at scale.",
+    tech: ["Next.js", "TypeScript", "AI Extraction Pipeline", "shadcn/ui"],
+    outcome:
+      "Document processing pipeline that extracts structured clinical data and generates a readable timeline summary",
+    relevance:
+      "Directly applicable to your inspection photo reader — same extraction → structured fields → dashboard display pattern",
+    liveUrl: "https://medrecord-ai-delta.vercel.app",
   },
   {
     id: "lead-crm",
     title: "Lead Intake CRM",
     description:
-      "Lead intake form, CRM dashboard, lead scoring, pipeline management, and automation rules",
-    tech: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui"],
+      "Custom lead intake and automation system with public intake form, CRM dashboard, lead scoring, pipeline management, and automation rules engine. Built the full deal flow — intake to scored pipeline.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    outcome:
+      "End-to-end lead flow — public intake form to scored pipeline with configurable automation rules",
+    relevance:
+      "Shows I understand pipeline management and automation rules — the same structure your Pipedrive integration needs",
   },
   {
-    id: "fleet-saas",
-    title: "Fleet Maintenance SaaS",
+    id: "ebay-monitor",
+    title: "eBay Pokemon Monitor",
     description:
-      "Asset tracking, work orders, preventive maintenance, inspections, parts inventory, analytics",
-    tech: ["Next.js", "Recharts", "TypeScript", "shadcn/ui"],
+      "Real-time third-party API monitoring tool with scheduled polling, webhook-based Discord alerts, and price trend tracking. Shows REST API integration and scheduled job patterns.",
+    tech: ["Next.js", "TypeScript", "eBay Browse API", "Webhooks", "shadcn/ui"],
+    outcome:
+      "Real-time listing monitor with webhook-based Discord alerts and price trend tracking",
+    relevance:
+      "Same integration pattern as hitting the Atlas Philadelphia API on a schedule to enrich deal records",
+    liveUrl: "https://ebay-pokemon-monitor.vercel.app",
   },
 ];

@@ -13,6 +13,11 @@ import {
   User,
   ArrowRight,
   Github,
+  GitBranch,
+  Download,
+  Ruler,
+  Camera,
+  Users,
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -23,9 +28,11 @@ import {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  // Dashboard Builder agent: add 3-5 feature page nav items here.
-  // Example: { href: "/orders", label: "Orders", icon: ShoppingCart },
+  { href: "/", label: "Deal Pipeline", icon: GitBranch },
+  { href: "/import", label: "Property Import", icon: Download },
+  { href: "/measurements", label: "Roof Measurements", icon: Ruler },
+  { href: "/photos", label: "Photo Extractor", icon: Camera },
+  { href: "/homeowners", label: "Homeowner Records", icon: Users },
 ];
 
 function SidebarLogo({ collapsed }: { collapsed: boolean }) {
